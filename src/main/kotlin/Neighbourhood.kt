@@ -1,7 +1,10 @@
-class Neighbourhood(trimIndent: String) {
+class Neighbourhood(val stringRepresentation: String) {
 
 }
 
 fun countNeighbours(neighbourhood: Neighbourhood): Int {
-    return 0
+    return neighbourhood.stringRepresentation
+        .filter {it.isDigit() }
+        .map { Integer.parseInt(it.toString()) }
+        .sum()
 }
