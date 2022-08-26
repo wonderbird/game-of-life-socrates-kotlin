@@ -46,20 +46,18 @@ class RulesTest {
     }
 
 
-
     private fun nextState(cellState: CellState, livingNeighbours: Int): CellState {
-        if (cellState == DEAD) {
-            return when (livingNeighbours) {
+        return when (cellState) {
+            DEAD -> when (livingNeighbours) {
                 3 -> ALIVE
                 else -> DEAD
             }
-        }
 
-
-        return when (livingNeighbours) {
-            2 -> ALIVE
-            3 -> ALIVE
-            else -> DEAD
+            ALIVE -> when (livingNeighbours) {
+                2 -> ALIVE
+                3 -> ALIVE
+                else -> DEAD
+            }
         }
     }
 }
