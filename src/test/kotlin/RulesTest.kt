@@ -1,5 +1,5 @@
 import CellState.DEAD
-import CellState.LIVING
+import CellState.ALIVE
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
@@ -7,36 +7,45 @@ class RulesTest {
 
     @Test
     internal fun `cell without neighbours dies`() {
-        nextState(LIVING, 0) shouldBe DEAD
+        nextState(ALIVE, 0) shouldBe DEAD
     }
 
     @Test
     internal fun `cell with one living neighbour dies`() {
-        nextState(LIVING, 1) shouldBe DEAD
+        nextState(ALIVE, 1) shouldBe DEAD
     }
 
     @Test
     internal fun `cell with two living neighbours survives`() {
-        nextState(LIVING, 2) shouldBe LIVING
+        nextState(ALIVE, 2) shouldBe ALIVE
     }
 
     @Test
     internal fun `cell with two three neighbours survives`() {
-        nextState(LIVING, 3) shouldBe LIVING
+        nextState(ALIVE, 3) shouldBe ALIVE
     }
 
     @Test
     internal fun `cell with more than three neighbours dies`() {
-        nextState(LIVING, 4) shouldBe DEAD
+        nextState(ALIVE, 4) shouldBe DEAD
     }
 
-    private fun nextState(state: CellState, livingNeighbours: Int) = when {
-        livingNeighbours == 2 -> LIVING
-        livingNeighbours == 3 -> LIVING
-        else -> DEAD
+    @Test
+    internal fun `dead cell with two neighbours stays dead`() {
+        nextState(DEAD, 2) shouldBe DEAD
+    }
+
+    private fun nextState(cellState: CellState, livingNeighbours: Int): CellState {
+        if (cellState == DEAD) return DEAD
+
+        return when (livingNeighbours) {
+            2 -> ALIVE
+            3 -> ALIVE
+            else -> DEAD
+        }
     }
 }
 
 enum class CellState {
-    LIVING, DEAD
+    ALIVE, DEAD
 }
