@@ -22,4 +22,15 @@ class NeighbourCounterTest {
         """.trimIndent())
         countNeighbours(neighbourhood) shouldBe 1
     }
+
+    @Test
+    internal fun `test count  in neighbourhood`() {
+        val neighbourhood = Neighbourhood("""
+            000
+            0x0
+            011
+        """.trimIndent())
+        countNeighbours(neighbourhood) shouldBe 2
+    }
+
 }
