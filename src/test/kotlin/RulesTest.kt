@@ -34,9 +34,20 @@ class RulesTest {
     internal fun `dead cell with two neighbours stays dead`() {
         nextState(DEAD, 2) shouldBe DEAD
     }
+    @Test
+    internal fun `dead cell with three neighbours should become alive`() {
+        nextState(DEAD, 3) shouldBe ALIVE
+    }
 
     private fun nextState(cellState: CellState, livingNeighbours: Int): CellState {
-        if (cellState == DEAD) return DEAD
+        if (cellState == DEAD) {
+            return when (livingNeighbours) {
+                3 -> ALIVE
+                else -> DEAD
+
+            }
+        }
+
 
         return when (livingNeighbours) {
             2 -> ALIVE
