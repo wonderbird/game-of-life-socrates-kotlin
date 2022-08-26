@@ -6,9 +6,9 @@ class NeighbourCounterTest {
     @Test
     internal fun `test dead neighbourhood`() {
         val neighbourhood = Neighbourhood("""
-            ...f
-            ...
-            ...
+            000
+            0x0
+            000
         """.trimIndent())
         countNeighbours(neighbourhood) shouldBe 0
     }
