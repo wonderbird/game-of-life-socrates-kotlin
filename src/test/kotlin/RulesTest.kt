@@ -48,23 +48,5 @@ class RulesTest {
             nextState(DEAD, 4) shouldBe DEAD
         }
     }
-
-    fun nextState(cellState: CellState, livingNeighbours: Int): CellState {
-        return when (cellState) {
-            DEAD -> when (livingNeighbours) {
-                3 -> ALIVE
-                else -> DEAD
-            }
-
-            ALIVE -> when (livingNeighbours) {
-                2 -> ALIVE
-                3 -> ALIVE
-                else -> DEAD
-            }
-        }
-    }
 }
 
-enum class CellState {
-    ALIVE, DEAD
-}
