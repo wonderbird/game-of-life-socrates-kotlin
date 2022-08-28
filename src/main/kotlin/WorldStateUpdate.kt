@@ -1,5 +1,5 @@
 fun WorldState.next(): WorldState {
-    TODO()
+    return this
 }
 
 
