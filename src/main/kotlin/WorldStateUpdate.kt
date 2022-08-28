@@ -1,8 +1,14 @@
-fun WorldState.next(): WorldState {
+fun WorldState.nextWorldState(): WorldState {
     return this
 }
 
 
-typealias WorldState = Map<Coordinate, CellState>
-typealias Coordinate = Pair<Int, Int>
+data class WorldState(
+    val cells: Map<Coordinate, CellState>
+)
+
+data class Coordinate(
+    val x: Int,
+    val y: Int
+)
 
