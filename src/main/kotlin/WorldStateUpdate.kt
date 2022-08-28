@@ -12,7 +12,7 @@ fun WorldState.nextWorldState(): WorldState {
 
 
 data class WorldState(
-    val cells: List<Cell>
+    val cells: Iterable<Cell>
 )
 
 data class Cell(
