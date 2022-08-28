@@ -16,11 +16,11 @@ data class WorldState(
 )
 
 data class Cell(
-    val coordinates: Coordinate,
+    val coordinates: Coordinates,
     val cellState: CellState,
 )
 
-data class Coordinate(
+data class Coordinates(
     val x: Int,
     val y: Int
 )

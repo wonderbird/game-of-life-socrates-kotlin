@@ -10,7 +10,7 @@ class WorldStateUpdateTest {
 
     @Test
     fun `lone cell should die`() {
-        WorldState(listOf(Cell(Coordinate(1, 2), CellState.ALIVE)))
+        WorldState(listOf(Cell(Coordinates(1, 2), CellState.ALIVE)))
             .nextWorldState() shouldBe WorldState(listOf())
     }
 }
