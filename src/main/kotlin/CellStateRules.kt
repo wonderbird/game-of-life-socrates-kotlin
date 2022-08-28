@@ -1,7 +1,7 @@
 import CellState.ALIVE
 import CellState.DEAD
 
-fun nextState(cellState: CellState, livingNeighbours: Int): CellState {
+fun nextFromNeighbourCount(cellState: CellState, livingNeighbours: Int): CellState {
     return when (cellState) {
         DEAD -> when (livingNeighbours) {
             3 -> ALIVE
